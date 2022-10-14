@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {Button, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Button, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Header from "./components/Header";
 import BigTimer from "./components/BigTimer";
 import React, {useState} from "react";
@@ -19,34 +19,65 @@ export default function App() {
             fromOffice: '18:01'
         }
     ])
-
+    var variable = 0
     const date = new Date();
     const nowDate = date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear();
-
-
-
+    const addVariable = () => {variable++}
     const addNewTable = () => {
         const newDate ={
             id: Date.now(),
             datee: nowDate,
             toOffice: date.getHours() + '.' + date.getMinutes(),
-            toBreak: 'sus',
-            fromBreak: 'sus',
-            fromOffice: 'sus1'
+            toBreak: '',
+            fromBreak: '',
+            fromOffice: ''
         }
         setInfoTable([newDate, ...infoTable])
     }
+
+    const removeFromArr = (arr, ind) => {
+        var newArr = []
+        for (let i = 0; i< arr.length; i++) {
+            if (i !== ind) {
+                 newArr.push(arr[i])
+            }
+        }
+
+        return newArr
+    }
+
+    const removeTable = () => {
+        var arr = infoTable
+        var newArr
+        newArr = removeFromArr(arr, 0)
+        setInfoTable(newArr)
+    }
+    const createTwoButtonAlert = () =>
+        Alert.alert(
+            "Alert Title",
+            "My Alert Msg",
+            [
+                {text: "Cancel", onPress: () => console.log("Cancel Pressed"), style: "cancel"},
+                {text: "OK", onPress: ()=> addNewTable() }
+            ]);
+
   return (
     <View style={styles.container}>
         <Header/>
         <BigTimer/>
         <View style={{flexDirection: 'row', marginHorizontal: 3,}}>
-            <ToOfficeButton onPress={addNewTable}>To Office</ToOfficeButton>
+            <ToOfficeButton onPress={createTwoButtonAlert}>To Office</ToOfficeButton>
             <ToBreakButton>To Break</ToBreakButton>
         </View>
         <View style={{flexDirection: 'row', marginHorizontal: 3,}}>
             <FromBreakButton>From Break</FromBreakButton>
             <FromOfficeButton>From Office</FromOfficeButton>
+        </View>
+        <View style={styles.deleteContainer}>
+            <View style={styles.deleteFlex}></View>
+            <TouchableOpacity style={styles.delete} onPress={() => removeTable()}>
+                <Text style={{color: 'red'}}>Delete</Text>
+            </TouchableOpacity>
         </View>
         <ScrollView><InfoBarList infoTable={infoTable}/></ScrollView>
       <StatusBar style="auto" />
@@ -61,5 +92,22 @@ const styles = StyleSheet.create({
     /*alignItems: 'center',
     justifyContent: 'center',*/
   },
-
+  delete: {
+      flexDirection: 'row-reverse',
+      padding: 3,
+      borderWidth: 2,
+      borderRadius: 7,
+      marginHorizontal: 6,
+      borderColor: '#0a6249',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flex: 1,
+  },
+  deleteContainer: {
+      flexDirection: 'row'
+  },
+  deleteFlex: {
+      paddingHorizontal: 20,
+      flex: 3,
+  }
 });

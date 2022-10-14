@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Button, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 
 const InfoBar = (props) => (
     <View style={styles.container}>
-        <Text style={styles.today}>{props.infos.datee}</Text>
+        <View style={styles.todayContainer}>
+            <Text style={styles.today}>{props.infos.datee}</Text>
+
+        </View>
+
         <View style={styles.tableValue}>
             <View style={styles.tableFlex}><Text>To Office</Text></View>
             <View style={styles.tableFlex}><Text>To Break</Text></View>
@@ -34,10 +38,15 @@ const styles = StyleSheet.create({
     },
     today: {
         backgroundColor: '#0a6249',
-        padding: 5,
+        color: "white",
+        flex: 2
+    },
+    todayContainer: {
+        flexDirection: 'row',
+        backgroundColor: '#0a6249',
         borderTopLeftRadius: 6,
         borderTopRightRadius: 6,
-        color: "white"
+        padding: 5,
     },
     tableValue: {
         flexDirection: "row",
