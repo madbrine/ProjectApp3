@@ -3,11 +3,15 @@ import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 const ToBreakButton = ({children, ...props}) => {
     return (
-        <TouchableOpacity {...props} style={styles.toBreak.container}>
-            <Text style={styles.toBreak.text}>
-                {children}
-            </Text>
-        </TouchableOpacity>
+        <View style={styles.delete}>
+            <View style={styles.delete2}>
+                <TouchableOpacity {...props}>
+                    <Text style={{color:'#0CE887'}}>
+                        {children}
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        </View>
 
     );
 };
@@ -15,35 +19,36 @@ const ToBreakButton = ({children, ...props}) => {
 export default ToBreakButton;
 
 const styles = StyleSheet.create({
-        atOffice: {
-            container: {
-                padding: 10,
-                margin: 4,
-                justifyContent: 'center',
-                flex: 1,
-                borderRadius: 7,
-                borderWidth: 2,
-                borderColor: '#0a6249',
-                alignItems: 'center',
-            },
-            text: {
-                fontSize: 25,
-            }
+        delete: {
+            flexDirection: 'row',
+            padding: 0,
+            borderRadius: 70,
+            marginHorizontal: 67,
+            marginBottom: 40,
+            //alignItems: 'center',
+            //justifyContent: 'center',
+            width: 40,
+            height: 40,
+            shadowColor: "#fff",
+            shadowOffset: {width: 0, height: 12,},
+            shadowOpacity: 0.58,
+            shadowRadius: 16.00,
+            elevation: 24,
         },
-        toBreak: {
-            container: {
-                padding: 10,
-                margin: 4,
-                justifyContent: 'center',
-                flex: 1,
-                borderRadius: 7,
-                borderWidth: 2,
-                borderColor: '#0a6249',
-                alignItems: 'center',
-            },
-            text: {
-                fontSize: 25,
-            }
-        }
+        delete2: {
+            borderWidth: 1,
+            borderRadius: 70,
+            borderColor: '#fff',
+            backgroundColor: '#efeeee',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 70,
+            height: 70,
+            shadowColor: "#000",
+            shadowOffset: {width: 0,height: 5,},
+            shadowOpacity: 0.34,
+            shadowRadius: 6.27,
+            elevation: 10,
+        },
     }
 )

@@ -18,9 +18,14 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         fontSize: 25,
         alignItems: 'center',
-        backgroundColor: '#0a6249',
-        color: 'white',
+        backgroundColor: '#efeeee',
+        color: '#8bb4b2',
         fontFamily: 'serif',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        shadowColor: "#000",
+        shadowOffset: {width: 0,height: 5,},
+        shadowOpacity: 0.34,
+        shadowRadius: 6.27,
+        elevation: 10,
     }
 })

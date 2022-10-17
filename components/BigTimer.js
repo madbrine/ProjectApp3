@@ -18,14 +18,17 @@ const BigTimer = () => {
         renderSeconds = '0' + seconds
     }
     return (
-        <View style={styles.container}>
-            <Text style={styles.timer}>{renderHours}:{renderMinutes}:{renderSeconds}</Text>
-            <View style={styles.means}>
-                <Text style={styles.mean}>hours</Text>
-                <Text style={styles.mean}>minutes</Text>
-                <Text style={styles.mean}>seconds</Text>
+        <View style={{alignItems: 'center',
+            justifyContent: 'center', margin: 20}}>
+            <View style={styles.containerOut}>
+                <View style={styles.container}>
+                    <View style={styles.container2}>
+                        <Text style={styles.timer}>{renderHours}:{renderMinutes}:{renderSeconds}</Text>
+                    </View>
+                </View>
             </View>
         </View>
+
     );
 };
 
@@ -34,17 +37,40 @@ export default BigTimer;
 const styles = StyleSheet.create({
     container: {
         padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 22,
+        borderRadius: 120,
+        borderColor: '#efeeee',
+        width: 230,
+        height: 230,
+
+    },
+    containerOut: {
+        borderWidth: 1, borderRadius: 120, borderColor: '#fff',
+        shadowColor: "#fff",
+        shadowOffset: {width: 0, height: 12,},
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+        elevation: 24,
+    },
+    container2: {
+        backgroundColor: '#efeeee',
+        width: 186,
+        height: 186,
+        borderRadius: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: "#fff",
+        shadowOffset: {width: 0, height: 12,},
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+        elevation: 24,
     },
     timer: {
-        fontSize: 50,
-        fontFamily: 'sans-serif-thin'
+        color: "#7a7a7a",
+        fontSize: 38,
+        fontFamily: 'sans-serif-medium',
+        fontWeight: 'bold',
     },
-    means: {
-        flexDirection: 'row',
-        paddingLeft: 8,
-    },
-    mean: {
-        flexDirection: 'row',
-        paddingRight: 20,
-    }
 })

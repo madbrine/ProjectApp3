@@ -4,9 +4,9 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
 const InfoBarList = (props) => {
     return (
-        <View>
-            {props.infoTable.map(infos =>
-                <InfoBar infos={infos} key={infos.id}></InfoBar>
+        <View style={{paddingBottom: 45}}>
+            {props.infoTable.map((info, key) =>
+                <InfoBar infos={info} key={key}></InfoBar>
             )}
         </View>
     );
